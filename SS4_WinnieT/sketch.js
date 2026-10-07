@@ -22,6 +22,10 @@ let meteorX2;
 let meteorY2;
 let meteorX3;
 let meteorY3;
+let meteorX4;
+let meteorY4;
+let meteorX5;
+let meteorY5;
 
 //declare variables for the color of the meteor
 let r = 255;
@@ -50,6 +54,10 @@ async function setup()
     meteorY2 = random(0, 300);
     meteorX3 = random(0, 1000);
     meteorY3 = random(0, 300);
+    meteorX4 = random(0, 1000);
+    meteorY4 = random(0, 300);
+    meteorX5 = random(0, 1000);
+    meteorY5 = random(0, 300);
 }
 
 function draw()
@@ -126,6 +134,28 @@ function draw()
             meteorY3 = random(0, 300);
         }
 
+        // movement of the meteor4
+        meteorX4 += 5;
+        meteorY4 += 2;
+
+        // if meteor4 goes off the screen, reset
+        if (meteorY4 > 400)
+        {
+            meteorX4 = random(0, 1000);
+            meteorY4 = random(0, 300);
+        }
+
+        // movement of the meteor5
+        meteorX5 += 2;
+        meteorY5 += 3;
+
+        // if meteor5 goes off the screen, reset
+        if (meteorY5 > 400)
+        {
+            meteorX5 = random(0, 1000);
+            meteorY5 = random(0, 300);
+        }
+
         // draw the meteor tail for first meteor
         stroke(255, 255, 255);
         strokeWeight(2);
@@ -153,6 +183,24 @@ function draw()
         noStroke();
         fill(r, g, b);
         ellipse(meteorX3, meteorY3, 5, 5);
+
+        // meteor and meteor tail for fourth meteor
+        stroke(255, 255, 255);
+        strokeWeight(2);
+        line(meteorX4, meteorY4, meteorX4 - 60, meteorY4 - 30);
+
+        noStroke();
+        fill(r, g, b);
+        ellipse(meteorX4, meteorY4, 5, 5);
+
+        // meteor and meteor tail for fifth meteor
+        stroke(255, 255, 255);
+        strokeWeight(2);
+        line(meteorX5,meteorY5, meteorX5 - 60,meteorY5 - 30);
+
+        noStroke();
+        fill(r, g, b);
+        ellipse(meteorX5,meteorY5, 5, 5);
     }
 
     // stroke for the outline of all the other objects
@@ -165,17 +213,10 @@ function draw()
 {
     fill(255);
     textSize(32);
-    text("A Quite Night", 500, 80);
-}
-// second message
-else if (currentTime < 3000)
-{
-    fill(255);
-    textSize(32);
     text("Something is coming...", 500, 80);
 }
-//third message
-else
+// second message
+else if (currentTime >= 2000 && currentTime <= 3000)
 {
     fill(255);
     textSize(38);
