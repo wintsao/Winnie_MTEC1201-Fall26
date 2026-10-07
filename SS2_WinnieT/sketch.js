@@ -3,6 +3,8 @@
 Name: Winnie Tsao
 Title: meteor on a road to the mountains at night
 
+I used keyPressed to make a meteor shower whenever the space is clicked, several different variables were also
+used to make this happen. 
 
 */
 
