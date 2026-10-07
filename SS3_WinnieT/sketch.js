@@ -85,9 +85,6 @@ function draw()
     // draw ellipse as the moon
     ellipse(100, 100, 100, 100);
 
-    // make the ellipse that follows the mouse position transparent
-    fill(255, 255, 255, 100);
-
     // METEOR
 
     // conditions for the meteor to move across the screen
