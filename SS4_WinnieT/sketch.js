@@ -12,7 +12,7 @@ to the sketch anticipating that something will happen in the sky.
 
 */
 
-// declare variables for the moon and mountain images
+// declare variables for the moon image
 let moon;
 
 //declare variables for the meteors
