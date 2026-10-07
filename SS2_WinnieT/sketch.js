@@ -3,14 +3,14 @@
 Name: Winnie Tsao
 Title: meteor on a road to the mountains at night
 
-I used keyPressed to make a meteor shower whenever the space is clicked, several different variables were also
+I used mousePressed to make a meteor start at the mouse position, several different variables were also
 used to make this happen. 
 
 */
 
-//declare variables for the meteor that will start at a random position on the sky when the spacebar is pressed
-let meteorX;
-let meteorY;
+//declare variables for the meteor that will start at the mouse position
+let meteorX = 500;
+let meteorY = 100;
 
 //declare variables for the color of the meteor
 let r = 255;
@@ -26,10 +26,6 @@ function setup()
 {
     //setting size of canvas
     createCanvas(1000, 600); 
-
-    //starting position of the meteor at a random position on the sky
-    meteorX = random(0, 1000);
-    meteorY = random(0, 400);
 }
 
 function draw()
@@ -92,14 +88,6 @@ function draw()
     meteorX += speedX;
     meteorY += speedY;
 
-    // if the meteor reaches the edge of the sky
-    if (meteorY >= 390)
-    {
-        speedX = 0;
-        speedY = 0;
-
-    }
-
     //draw the meteor tail
     stroke(255, 255, 255);
     strokeWeight(2);
@@ -113,18 +101,15 @@ function draw()
     //stroke for the outline of all the other objects
     stroke(0);
     strokeWeight(1);
-
 }
 
-function keyPressed() 
+function mousePressed() 
 {
-	//if the spacebar is pressed, the meteor will start at a random position on the sky
-    if (keyCode === 32) 
-    {
-        meteorX = random(0, 1000);
-        meteorY = random(0, 400);
+	//start the meteor at the mouse position
+    meteorX = mouseX;
+    meteorY = mouseY;
 
-        speedX = 5;
-        speedY = 2;
-    }
+    //give the meteor movement
+    speedX = 5;
+    speedY = 2;
 }
