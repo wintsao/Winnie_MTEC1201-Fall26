@@ -8,9 +8,9 @@ used to make this happen.
 
 */
 
-//declare variables for the meteor that will start at a random position on the canvas when the spacebar is pressed
-let meteorX = random(0, 1000);
-let meteorY = random(0, 600);
+//declare variables for the meteor that will start at a random position on the sky when the spacebar is pressed
+let meteorX;
+let meteorY;
 
 //declare variables for the color of the meteor
 let r = 255;
@@ -27,7 +27,7 @@ function setup()
     //setting size of canvas
     createCanvas(1000, 600); 
 
-    //starting position of the meteor at a random position on the canvas
+    //starting position of the meteor at a random position on the sky
     meteorX = random(0, 1000);
     meteorY = random(0, 400);
 }
@@ -84,7 +84,7 @@ function draw()
     fill(255, 255, 255, 100);
 
 	//ellipse following the mouse position as the pointer for the meteor
-	ellipse(mouseX, mouseY, 20, 20);
+	ellipse(mouseX, mouseY, 10, 10);
 
     //METEOR
 
@@ -92,18 +92,39 @@ function draw()
     meteorX += speedX;
     meteorY += speedY;
 
+    // if the meteor reaches the edge of the sky
+    if (meteorY >= 390)
+    {
+        speedX = 0;
+        speedY = 0;
+
+    }
+
+    //draw the meteor tail
+    stroke(255, 255, 255);
+    strokeWeight(2);
+    line(meteorX, meteorY, meteorX - 60, meteorY - 30);
+
     //draw the meteor
+    noStroke();
     fill(r, g, b);
-    ellipse(meteorX, meteorY, 20, 20);
+    ellipse(meteorX, meteorY, 5, 5);
+
+    //stroke for the outline of all the other objects
+    stroke(0);
+    strokeWeight(1);
 
 }
 
 function keyPressed() 
 {
-	//if the spacebar is pressed, the meteor will start at a random position on the canvas
+	//if the spacebar is pressed, the meteor will start at a random position on the sky
     if (keyCode === 32) 
     {
         meteorX = random(0, 1000);
-        meteorY = random(0, 600);
+        meteorY = random(0, 400);
+
+        speedX = 5;
+        speedY = 2;
     }
 }
