@@ -15,6 +15,9 @@ to the sketch anticipating that something will happen in the sky.
 // declare variables for the moon image
 let moon;
 
+// declare variables for font
+let font;
+
 //declare variables for the meteors
 let meteorX1;
 let meteorY1;
@@ -43,6 +46,9 @@ async function setup()
 
     // load the moon image
     moon = await loadImage('moon.png');
+
+    // load the font
+    font = await loadFont('Priestacy.otf');
 
     // declare text position
     textAlign(CENTER);
@@ -213,6 +219,7 @@ function draw()
 {
     fill(255);
     textSize(32);
+    textFont(font);
     text("Something is coming...", 500, 80);
 }
 // second message
@@ -220,6 +227,7 @@ else if (currentTime >= 2000 && currentTime <= 3000)
 {
     fill(255);
     textSize(38);
+    textFont(font);
     text("LOOK UP THE SKY!", 500, 80);
 }
 }
