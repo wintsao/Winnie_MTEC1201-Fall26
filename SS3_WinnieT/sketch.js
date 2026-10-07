@@ -90,7 +90,7 @@ function draw()
     // conditions for the meteor to move across the screen
     if (meteorY < 200)
     {
-        // moves teh meteor normally across the canvas
+        // moves the meteor normally across the canvas
         meteorX += speedX;
         meteorY += speedY;
     }
