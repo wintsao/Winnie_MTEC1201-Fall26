@@ -272,7 +272,7 @@ function Game()
     }
 
     // Gradually increase speed
-    difficulty = currentTime / 60000;
+    difficulty = currentTime / 10000;
 
     // Continuous spaceship movement
     if (keyIsDown(LEFT_ARROW))
