@@ -1,5 +1,6 @@
 
 /*
+
 Name: Winnie Tsao
 Title: Meteor Dodge
 Instructions:
@@ -192,7 +193,7 @@ function GeometricBackground()
     noStroke();
 }
 
-// Title screen
+// TITLE SCREEN
 function Menu()
 {
     background(0);
@@ -255,7 +256,7 @@ function Game()
     ellipse(600, 450, 3, 3);
     ellipse(900, 500, 3, 3);
 
-    // GAME TIME
+    // Game time
     let currentTime = millis() - startTime;
     survivalTime = floor(currentTime / 1000);
     let minutes = floor(survivalTime / 60);
@@ -270,10 +271,10 @@ function Game()
         timeText = minutes + ":" + seconds;
     }
 
-    // GRADUALLY INCREASE OF TIME SPEED
+    // Gradually increase speed
     difficulty = currentTime / 60000;
 
-    // CONTINUOUS SPACESHIP MOVEMENT
+    // Continuous spaceship movement
     if (keyIsDown(LEFT_ARROW))
     {
         shipX -= shipSpeed;
@@ -294,7 +295,7 @@ function Game()
         shipY += shipSpeed;
     }
 
-    // KEEP SPACESHIP INSIDE CANVAS
+    // Keep spaceship inside canvas
     if (shipX < 40)
     {
         shipX = 40;
@@ -315,10 +316,10 @@ function Game()
         shipY = 550;
     }
 
-    // DRAW SPACESHIP
+    // Draw spaceship
     Spaceship();
 
-    // MOVE AND DRAW METEORS
+    // Move and draw meteors
     meteorY1 = updateMeteor(meteorX1, meteorY1, meteorSize1, meteorSpeed1, 1);
     meteorY2 = updateMeteor(meteorX2, meteorY2, meteorSize2, meteorSpeed2, 2);
     meteorY3 = updateMeteor(meteorX3, meteorY3, meteorSize3, meteorSpeed3, 3);
@@ -328,7 +329,7 @@ function Game()
     meteorY7 = updateMeteor(meteorX7, meteorY7, meteorSize7, meteorSpeed7, 7);
     meteorY8 = updateMeteor(meteorX8, meteorY8, meteorSize8, meteorSpeed8, 8);
 
-    // SCORE DISPLAY
+    // Score display
     fill(255);
     noStroke();
     textAlign(LEFT);
@@ -340,13 +341,13 @@ function Game()
 // UPDATE MOVEMENT OF METEOR
 function updateMeteor(x, y, size, speed, number)
 {
-    // METEOR MOVING DOWN
+    // Meteor going down
     y += speed + difficulty;
 
-    // DRAW METEOR
+    // Draw meteor
     meteor(x, y, size);
 
-    // CHECK COLLISION WITH SPACESHIP
+    // Check collision with spaceship
     if (y > shipY - size - 25)
     {
         if (y < shipY + size + 25)
@@ -360,15 +361,15 @@ function updateMeteor(x, y, size, speed, number)
             }
         }
     }
-    // METEOR PASSED THE BOTTOM OF SCREEN
+    // Meteor passed the bottom of the screen
     if (y > 650)
     {
         score += 1;
 
-        // RESET METEOR TO COME DOWN FROM ABOVE THE SCREEN
+        // Reset meteor to come down from above the screen
         y = random(-400, -50);
 
-        // NEW RANDOM X POSITION OF METEOR
+        // New random X position of meteor
         if (number === 1)
         {
             meteorX1 = random(40, 960);
@@ -433,17 +434,17 @@ function meteor(x, y, size)
 // DRAW SPACESHIP
 function Spaceship()
 {
-    // MAIN BODY
+    // Main body
     fill(175, 190, 215);
     stroke(255);
     strokeWeight(2);
     quad(shipX - 18, shipY + 25, shipX + 18, shipY + 25, shipX + 12, shipY - 25, shipX - 12, shipY - 25);
 
-    // NOSE
+    // Nose
     fill(220, 230, 240);
     triangle(shipX -12, shipY - 25, shipX + 12, shipY - 25, shipX, shipY - 45);
 
-    // WINGS
+    // Wings
     fill(60, 140, 220);
     triangle(shipX - 12, shipY, shipX - 35, shipY + 25, shipX - 15, shipY + 25);
     triangle(shipX + 12, shipY, shipX + 35, shipY + 25, shipX + 15, shipY + 25);
@@ -452,7 +453,7 @@ function Spaceship()
     fill(80, 220, 255);
     ellipse(shipX, shipY - 10, 13, 22);
 
-    // Engine
+    // Engine flame
     fill(255, 160, 40);
     triangle(shipX - 8, shipY + 25, shipX + 8, shipY + 25, shipX, shipY + 42);
 
@@ -483,11 +484,11 @@ function GameOver()
 // RESET GAME
 function resetGame()
 {
-    // RESET SPACESHIP
+    // Reset spaceship
     shipX = 500;
     shipY = 500;
 
-    // RANDOM METEOR POSITION
+    // Random meteor position
     meteorX1 = random(40, 960);
     meteorX2 = random(40, 960);
     meteorX3 = random(40, 960);
@@ -497,7 +498,7 @@ function resetGame()
     meteorX7 = random(40, 960);
     meteorX8 = random(40, 960);
 
-    // METEORS START AT DIFFERENT HEIGHTS ABOVE THE SCREEN
+    // Meteors start at different heights above the screen
     meteorY1 = -100;
     meteorY2 = -250;
     meteorY3 = -400;
@@ -507,13 +508,13 @@ function resetGame()
     meteorY7 = -1000;
     meteorY8 = -1150;
 
-    //RESET DIFFICULTY AND SCORE
+    // Reset difficulty and score
     difficulty = 0;
     score = 0;
     survivalTime = 0;
     timeText = "0:00";
 
-    //START TIMING AGAIN
+    // Reset timing
     startTime = millis();
 }
 
